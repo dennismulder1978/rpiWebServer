@@ -1,3 +1,29 @@
+<section>
+		<h2>Action log</h2>
+		<div class="log">
+		<p><span>Action</span><span>Pair</span><span>Qt</span><span>Price</span><span>Spend</span><span>Timestamp</span><span>Cost</span></p>
+			<p>
+			{% for para in bitvavo_data %}
+				{% for item in para %}
+					{% if not loop.last %}
+
+						{% if item == "buy" %}
+					    		<span class="buy">{{ item }}</span>
+						{% elif item == "sell" %}
+					    		<span class="sell">{{ item }}</span>
+						{% else %}
+				    			<span>{{ item }}</span>
+						{% endif %}
+					{% else %}
+							<span>Cost: € {{ item }}</span>
+					{% endif %}
+				{% endfor %}
+			<br/>
+			{% endfor %}
+			</p>
+		</div>
+
+
 <!DOCTYPE html>
    <head>
 	<title>Bitcoin and Altcoin trades</title>
