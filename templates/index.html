@@ -16,7 +16,11 @@
 	<div>
 		<h3>Total value: €{{ tot_bal_euro }}</h3>
 		<h3>Balance: </h3>
-			<p>{{  balance  }}</p>
+		<p>{{  balance  }}</p>
+		{% for key, value in balance.items() %}
+			<p>{{  key  }}: {{  value  }}</p>
+		{% endfor %}
+
 	</div>
 
 	</section>
