@@ -1,0 +1,43 @@
+body {
+	background-color: black;
+	color: white;
+}
+
+p {
+	display: block;
+	font-size:0.7em;
+}
+
+div {
+	position: relative;
+	border: 1px gray solid;
+	padding: 5px;
+	margin: 5px;
+}
+
+h1, h2, h3 {
+	color: darkgray;
+}
+
+span {
+	display: inline-block;
+	width: 120px;
+
+}
+span:nth-child(6) {
+}
+
+section {
+	position: relative;
+	margin-bottom: 75px;
+
+}
+
+span.buy{
+	color: #68DD00;	
+}
+
+span.sell{
+	color: #FF005C;
+;
+}

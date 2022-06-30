@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+   <head>
+	<title>Bitcoin and Altcoin trades</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='coin-icon-2.jpg') }}">
+
+   </head>
+   <body>
+	<header>
+	        <h1>Bitcoin and Altcoin trades</h1>
+	</header>
+
+	<section>
+	<h2>Prices and balances</h2>
+	<div>
+		<p>Total value: € {{ BAL_TOT|round(2) }}</p>
+		<p>Free EURO: € {{ BAL_EURO|round(2) }}</p>
+
+		{% if BTC_BITVAVO[1] >= 0 %}
+			<p>BTC (Bitvavo): price: € {{BTC_BITVAVO[0]}}, balance: {{BTC_BITVAVO[1]}}, worth: € {{ (BTC_BITVAVO[0] * BTC_BITVAVO[1])|round(2) }}</p>
+		{% endif %}
+		{% if ETH_BITVAVO[1] >= 0 %}
+			<p>ETH (Bitvavo): price: € {{ETH_BITVAVO[0]}}, balance: {{ETH_BITVAVO[1]}}, worth: € {{ (ETH_BITVAVO[0] * ETH_BITVAVO[1])|round(2) }}</p>
+		{% endif %}
+		{% if ADA_BITVAVO[1] >= 0 %}
+			<p>ADA (Bitvavo): price: € {{ADA_BITVAVO[0]}}, balance: {{ADA_BITVAVO[1]}}, worth: € {{ (ADA_BITVAVO[0] * ADA_BITVAVO[1])|round(2) }}</p>
+		{% endif %}
+		{% if SOL_BITVAVO[1] >= 0 %}
+			<p>SOL (Bitvavo): price: € {{SOL_BITVAVO[0]}}, balance: {{SOL_BITVAVO[1]}}, worth: € {{ (SOL_BITVAVO[0] * SOL_BITVAVO[1])|round(2) }}</p>
+		{% endif %}
+
+	</div>
+
+	</section>
+
+	<section>
+		<h2>Action log</h2>
+		<div class="log">
+		<p><span>Action</span><span>Pair</span><span>Qt</span><span>Price</span><span>Spend</span><span>Timestamp</span><span>Cost</span></p>
+			<p>
+			{% for para in bitvavo_data %}
+				{% for item in para %}
+					{% if not loop.last %}
+
+						{% if item == "buy" %}
+					    		<span class="buy">{{ item }}</span>
+						{% elif item == "sell" %}
+					    		<span class="sell">{{ item }}</span>
+						{% else %}
+				    			<span>{{ item }}</span>
+						{% endif %}
+					{% else %}
+							<span>Cost: € {{ item }}</span>
+					{% endif %}
+				{% endfor %}
+			<br/>
+			{% endfor %}
+			</p>
+		</div>
+
+
+	</section>
+
+   </body>
+</html>

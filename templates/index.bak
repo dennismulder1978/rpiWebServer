@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+   <head>
+	<title>Bitcoin and Altcoin trades</title>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='coin-icon-2.jpg') }}">
+
+   </head>
+   <body>
+	<header>
+	        <h1>Bitcoin and Altcoin trades</h1>
+	</header>
+
+	<section>
+	<h2>Prices and balances</h2>
+	<div>
+		<p>Total value: € {{ BAL_EURO|round(2) }}</p>
+
+<!--		{% if BTC[1] > -1 %}
+			<p>BTC: price: $ {{BTC[0]}}, balance: {{BTC[1]}}, worth: $ {{ (BTC[0] * BTC[1])|round(2) }}</p>
+		{% endif %}
+		{% if SOL[1] > -1 %}
+			<p>SOL: price: $ {{SOL[0]}}, balance: {{SOL[1]}}, worth: $ {{ (SOL[0] * SOL[1])|round(2) }}</p>
+		{% endif %}
+		{% if SAND[1] > -1 %}
+			<p>SAND: price: $ {{SAND[0]}}, balance: {{SAND[1]}}, worth: $ {{ (SAND[0] * SAND[1])|round(2) }}</p>
+		{% endif %}
+		{% if BNB[1] > -1 %}
+			<p>BNB: price: $ {{BNB[0]}}, balance: {{BNB[1]}}, worth: $ {{ (BNB[0] * BNB[1])|round(2) }}</p>
+		{% endif %}
+		{% if ADA[1] > -1 %}
+			<p>ADA (Binance): price: $ {{ADA[0]}}, balance: {{ADA[1]}}, worth: $ {{ (ADA[0] * ADA[1])|round(2) }}</p>
+		{% endif %}
+-->
+		{% if BTC_BITVAVO[1] >= 0 %}
+			<p>BTC (Bitvavo): price: € {{BTC_BITVAVO[0]}}, balance: {{BTC_BITVAVO[1]}}, worth: € {{ (BTC_BITVAVO[0] * BTC_BITVAVO[1])|round(2) }}</p>
+		{% endif %}
+		{% if ETH_BITVAVO[1] >= 0 %}
+			<p>ETH (Bitvavo): price: € {{ETH_BITVAVO[0]}}, balance: {{ETH_BITVAVO[1]}}, worth: € {{ (ETH_BITVAVO[0] * ETH_BITVAVO[1])|round(2) }}</p>
+		{% endif %}
+		{% if ADA_BITVAVO[1] >= 0 %}
+			<p>ADA (Bitvavo): price: € {{ADA_BITVAVO[0]}}, balance: {{ADA_BITVAVO[1]}}, worth: € {{ (ADA_BITVAVO[0] * ADA_BITVAVO[1])|round(2) }}</p>
+		{% endif %}
+		{% if SOL_BITVAVO[1] >= 0 %}
+			<p>SOL (Bitvavo): price: € {{SOL_BITVAVO[0]}}, balance: {{SOL_BITVAVO[1]}}, worth: € {{ (SOL_BITVAVO[0] * SOL_BITVAVO[1])|round(2) }}</p>
+		{% endif %}
+
+	</div>
+
+	</section>
+
+	<section>
+<!--		<h2>Action log</h2>
+		<div class="log">
+			<h3>BTC - BUSD</h3>
+			<p>
+			{% for para in btc_trade_data %}
+				{% for item in para %}
+					{% if not loop.last %}
+						{% if item == "Buy" %}
+				    			<span class="buy">{{ item }}</span>
+						{% elif item == "Sell" %}
+				    		<span class="sell">{{ item }}</span>
+						{% else %}
+					    		<span>{{ item }}</span>
+						{% endif %}.
+					{% else %}
+						Cost: $ {{ item|round(2) }}			
+					{% endif %}
+				{% endfor %}
+			<br/>
+			{% endfor %}
+			</p>
+		</div>
+		<div class="log">
+        	        <h3>SOL - BUSD</h3>
+                	<p>
+			{% for para in sol_trade_data %}
+				{% for item in para %}
+					{% if not loop.last %}
+						{% if item == "Buy" %}
+					    		<span class="buy">{{ item }}</span>
+						{% elif item == "Sell" %}
+				    		<span class="sell">{{ item }}</span>
+						{% else %}
+					    		<span>{{ item }}</span>
+						{% endif %}.
+					{% else %}
+						Cost: $ {{ item|round(2) }}			
+					{% endif %}
+				{% endfor %}
+			<br/>
+			{% endfor %}
+		</p>
+		</div>
+		<div class="log">
+			<h3>ADA - BUSD</h3>
+			<p>
+			{% for para in ada_trade_data %}
+				{% for item in para %}
+					{% if not loop.last %}
+						{% if item == "Buy" %}
+					    		<span class="buy">{{ item }}</span>
+						{% elif item == "Sell" %}
+				    		<span class="sell">{{ item }}</span>
+						{% else %}
+					    		<span>{{ item }}</span>
+						{% endif %}.
+					{% else %}
+						Cost: $ {{ item|round(2) }}			
+					{% endif %}
+				{% endfor %}
+			<br/>
+			{% endfor %}
+			</p>
+		</div>
+		<div class="log">
+			<h3>ADA - EURO (Bitvavo)</h3>
+			<p>
+			{% for para in ada_bitvavo_trade_data %}
+				{% for item in para %}
+					{% if not loop.last %}
+
+						{% if item == "buy" %}
+					    		<span class="buy">{{ item }}</span>
+						{% elif item == "sell" %}
+					    		<span class="sell">{{ item }}</span>
+						{% else %}
+				    			<span>{{ item }}</span>
+						{% endif %}.
+					{% else %}
+						Cost: € {{ item }}
+					{% endif %}
+				{% endfor %}
+			<br/>
+			{% endfor %}
+			</p>
+		</div>
+		<div class="log">
+			<h3>SAND - BUSD</h3>
+			<p>
+			{% for para in sand_trade_data %}
+				{% for item in para %}
+					{% if not loop.last %}
+						{% if item == "Buy" %}
+					    		<span class="buy">{{ item }}</span>
+						{% elif item == "Sell" %}
+				    		<span class="sell">{{ item }}</span>
+						{% else %}
+					    		<span>{{ item }}</span>
+						{% endif %}.
+					{% else %}
+						Cost: $ {{ item|round(2) }}			
+					{% endif %}
+				{% endfor %}
+			<br/>
+			{% endfor %}
+			</p>
+		</div>
+	</section>
+-->
+   </body>
+</html>
