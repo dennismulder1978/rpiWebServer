@@ -14,8 +14,11 @@
 	<section>
 	<h2>Prices and balances</h2>
 	<div>
-		<p>Total value: € {{ tot_bal_euro }}</p>
-		<p>Balance: {{ balance }}</p>
+		<h3>Total value: €{{ tot_bal_euro }}</h3>
+		<h3>Balance: </h3>
+			{% for each in balance%}
+				<p>{{  each  }}</p>
+			{% endfor %}
 		<p>Price: € {{ price }}</p>
 
 	</div>
